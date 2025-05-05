@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BusinessController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,3 +19,9 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+Route::get('/', function () {
+    return view('home');
+});
+// Add Routes for Business Directory
+Route::get('/businesses', [BusinessController::class, 'index'])->name('businesses.index');
+
